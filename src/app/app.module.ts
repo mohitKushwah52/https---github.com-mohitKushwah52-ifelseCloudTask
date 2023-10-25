@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SideNavComponent } from './core/components/side-nav/side-nav.component';
 import { HeaderComponent } from './core/components/header/header.component';
-import { LibModule } from './core/lib/lib.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LibModule,
     HttpClientModule
   ],
   providers: [],
