@@ -1,0 +1,83 @@
+/* You can add global styles to this file, and also import other style files */
+$primary-color: #384152;
+$light-gray: #787a7d;
+
+*{
+    // margin: 0;
+    // padding: 0;
+    box-sizing: border-box;
+}
+p, h1, h2, h3, h4, h5, h6{
+    margin-bottom: 0;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card, .card-header, .card-footer{
+    border-width: 2px;
+    background: transparent;
+    border-color: rgba($color: #000000, $alpha: 0.04);
+}
+
+.heading{
+    font-size: .95em;
+    font-weight: 700;
+    color: $primary-color;
+}
+.pera{
+    font-size: .75em;
+    font-weight: 500;
+    color: $light-gray;
+}
+svg{
+    width: 15px;
+    height: 15px;
+}
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 45px;
+        height: 45px;
+    }
+    .image-content{
+        padding-left: 0.5em;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        @extend .flex-center;
+        margin: .25em 0;
+        padding: .5em 0;
+    }
+}
+.primary{
+    color: $primary-color !important;
+}
+.font-700{
+    font-weight: 700 !important;
+}
+
+[class^="fa-"]{
+    color: $light-gray;
+    margin: .35em;
+}
+
+.ifElse-lib-btn{
+    border: 1.75px solid rgba($color: #000000, $alpha: 0.1);
+    background: transparent;
+    padding: .5em 1em;
+    font-size: 0.75em;
+    font-weight: 700;
+    border-radius: 5px;
+    color: #636c7d;
+    cursor: pointer;
+}

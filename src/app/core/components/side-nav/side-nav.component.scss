@@ -1,0 +1,39 @@
+@import '../../../../styles.scss';
+
+.side-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 101;
+    width: 50px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0.25em;
+
+ul{
+    li{
+        margin: 0;
+            button {
+                @extend .flex-center;
+                width: 25px;
+                height: 25px;
+                border-radius: 5px;
+                border: none;
+
+                span {
+                    width: 12px;
+                    height: 12px;
+                    background: #aca8f1;
+                    border-radius: 50%;
+                }
+            }
+            img{
+                width: 20px;
+                height: auto;
+            }
+        }
+    }
+}

@@ -1,0 +1,167 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-start">
+                <div class="image-container">
+                    <img src="../../../assets/images/img1.png" alt="">
+                    <div class="image-content">
+                        <p class="heading">Vendor breakedown</p>
+                        <p class="pera">Keep track of Vendors and their security ratings.</p>
+                    </div>
+                </div>
+                <button class="btn p-0"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            </div>
+            <div class="card-body">
+                <canvas id="canvas">{{chart}}</canvas>
+            </div>
+            <div class="card-footer d-flex justify-content-end">
+                <button class="ifElse-lib-btn">
+                    View full report
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-start">
+
+                <div>
+                    <p class="heading">Vendors monitored</p>
+                    <p class="pera">you're using 80% of available spots.</p>
+                </div>
+                <button class="btn p-0"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            </div>
+            <div class="card-body position-relative">
+                <p class="prog-label d-flex"><i class="fa-solid fa-arrow-trend-up"></i> 10%</p>
+                <canvas id="pieChart">{{pieChart}}</canvas>
+                <div>
+                    <p class="heading">You've almost reached your limit</p>
+                    <p class="pera">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad ducimus obcaecati
+                        perferendis unde vel </p>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-end">
+                <button class="ifElse-lib-btn">
+                    <i class="fa-solid fa-bolt"></i>
+                    Upgrade plan
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card teams">
+            <div class="card-header py-4 d-flex justify-content-between align-items-start">
+                <div>
+                    <p class="heading">
+                        Team members
+                        <span class="pera batch-btn usercount">{{teamsData.length}} users</span>
+                    </p>
+                </div>
+                <button class="btn p-0"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            </div>
+            <div class="card-body p-0">
+                <table class="w-100">
+                    <thead>
+                        <tr>
+                            <td>
+                                <input type="checkbox" (click)="selectAll($event)">
+                            </td>
+                            <td *ngFor="let colName of tableHeader">
+                                <p class="pera">
+                                    {{colName.column_name}}
+                                    <i class="fa-solid fa-arrow-down" *ngIf="colName.column_name==='Status'"></i>
+                                    <i class="fa-regular fa-circle-question" *ngIf="colName.column_name==='Role'"></i>
+                                </p>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let team of teamsData">
+                            <td>
+                                <input type="checkbox" [checked]="team.isSelect">
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="image-container">
+                                        <img src="../../../assets/images/img1.png" alt="">
+                                        <div class="image-content">
+                                            <p class="pera primary font-700">{{team.name.first_name}}
+                                                {{team.name.last_name}}</p>
+                                            <p class="pera">{{team.name.handle}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="pera batch-btn"
+                                    [ngClass]="team.status == 'Customer' ? 'green' : 'gray'">{{team.status}}</span>
+                            </td>
+                            <td>
+                                <p class="pera">{{team.role}}</p>
+                            </td>
+                            <td>
+                                <div class="p-bar" [attr.data-prog]="team.license_used">
+                                    <span [style.width]="team.license_used+'%'"></span>
+                                </div>
+                            </td>
+                            <td class="d-flex justify-content-between">
+                                <div class="team">
+                                    <span class="pera batch-btn" [style.background-color]="teamRole.background_color"
+                                        [style.border-color]="teamRole.text_color" [style.color]="teamRole.text_color"
+                                        [class.mx-1]="i == 1"
+                                        *ngFor="let teamRole of team.teams; let i = index">{{teamRole.value }}</span>
+                                </div>
+                                <div class="action">
+                                    <i class="fa-regular fa-trash-can" (click)="openPopUp(team, 'delete')"></i>
+                                    <i class="fa-solid fa-pen" (click)="openPopUp(team, '')"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <button class="ifElse-lib-btn">
+                    <i class="fa-solid fa-arrow-left mx-1"></i>
+                    Previous
+                </button>
+                <ul class="d-flex">
+                    <li class="pera px-2 mx-1">1</li>
+                    <li class="pera px-2 mx-1">2</li>
+                    <li class="pera px-2 mx-1">3</li>
+                    <li class="pera px-2 mx-1">...</li>
+                    <li class="pera px-2 mx-1">8</li>
+                    <li class="pera px-2 mx-1">9</li>
+                    <li class="pera px-2 mx-1">10</li>
+                </ul>
+                <button class="ifElse-lib-btn">
+                    Next
+                    <i class="fa-solid fa-arrow-right mx-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup" *ngIf="popup">
+    <div class="content">
+        <div class="card">
+            <div class="card-body">
+                <button class="btn" (click)="closePopup()"><i class="fa-solid fa-xmark"></i></button>
+                <p class="pera">Name : {{popupData.name.first_name}}
+                    {{popupData.name.last_name}}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between" *ngIf="popupData.modal == 'delete'">
+                <button class="ifElse-lib-btn" (click)="removeItem(popupData)">
+                    Delete
+                </button>
+                <button class="ifElse-lib-btn" (click)="closePopup()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
