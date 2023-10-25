@@ -168,6 +168,17 @@ table {
     width: 150px !important;
     height: 150px !important;
 }
+.piechartContent{
+    position: relative;
+    &::after{
+        content: '240';
+        position: absolute;
+        top: -125%;
+        font-size: 2em;
+        left: 25%;
+        @extend .heading;
+    }
+}
 .prog-label{
     position: absolute;
     top: 20px;
